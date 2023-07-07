@@ -1,45 +1,46 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
 
 
 
-const AddContact = ({addContactHandler}) => {
-  const[newContact, setNewContact] = useState({name: "", email: ""});
 
-    const navigate = useNavigate();
+class AddContact extends React.Component {
+    state= {
+        name: "",
+        email: "",
+    };
+
     
 
-    const add = (e) => {
+    add = (e) => {
         e.preventDefault();
-        if(newContact.name=== "" || newContact.email===""){
+        if(this.state.name=== "" || this.state.email===""){
             alert("All fields are mandatory");
             return;
         }
-        addContactHandler(newContact);
-        console.log(newContact);
-        setNewContact({name: "", email: ""});
-        //navigate('/');
+        this.props.addContactHandler(this.state);
+        this.setState({name: "", email:""});
+      
     }
-    
+    render(){
         return(
            <div className="ui main">
               <h2>Add Contact</h2>
-              <form className="ui form" onSubmit= {add}>
+              <form className="ui form" onSubmit= {this.add}>
                 <div className="field">
                     <label>Name</label>
                     <input type="text" 
                     name="name" 
                     placeholder="Name" 
-                    value= {newContact.name}
-                    onChange= {(e) =>setNewContact({name: e.target.value})}/>
+                    value= {this.state.name}
+                    onChange= {(e) =>this.setState({name: e.target.value})}/>
                 </div>
                 <div className="field">
                     <label>Email</label>
                     <input type="text" 
                     name="email" 
                     placeholder="Email"
-                    value= {newContact.email}
-                    onChange= {(e) =>setNewContact({email: e.target.value})}/> 
+                    value= {this.state.email}
+                    onChange= {(e) =>this.setState({email: e.target.value})}/> 
                 </div>
                 <div>
                
@@ -50,6 +51,6 @@ const AddContact = ({addContactHandler}) => {
            </div>
         );
     }
-
+}
 
 export default AddContact;

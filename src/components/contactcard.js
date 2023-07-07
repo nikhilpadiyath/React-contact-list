@@ -1,5 +1,6 @@
 import React from 'react';
-import user from '../images/user.jpg'
+import user from '../images/user.jpg';
+
 
 const ContactCard = (props) => {
     const {id,name,email} = props.contact;
@@ -15,7 +16,7 @@ return(
             onClick={() => props.clickHandler(id)} 
             ></i>
            </div>
-
+          
 );
 
 
