@@ -18,13 +18,17 @@ const ContactList = (props) => {
 
     return(
         <div className= "main">
-          <div style={{marginTop: "50px"}}> <h3> Contact List</h3></div> 
+          <div style={{marginTop: "50px"}}> 
+          <h3> Contact List
+          <Link to="/add">
+                    <button style= {{marginLeft: '100px'}} className= "ui button blue right">Add a New Contact</button>
+                    </Link>
+                    </h3>
+          </div> 
          <div className="ui celled list">
             {renderContactList}
          </div>
-         <Link to="/add">
-                    <button className= "ui button blue right">Add a New Contact</button>
-                    </Link>
+        
          
 </div>
     );

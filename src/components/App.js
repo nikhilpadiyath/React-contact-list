@@ -9,7 +9,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
   
-   const LOCAL_STORAGE_KEY= "contacts";
+   //const LOCAL_STORAGE_KEY= "contacts";
    const [contacts, setContacts]= useState([]);
 
    const retrieveContacts = async () => {
@@ -21,8 +21,8 @@ function App() {
 
     const request = {
       id: Math.floor(Math.random()*100),
-      ...contact
-    }
+      ...contact,
+    };
 
     const response = await api.post("/contacts", request);
         setContacts([...contacts,response.data]);

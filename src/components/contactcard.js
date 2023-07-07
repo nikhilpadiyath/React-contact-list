@@ -10,11 +10,13 @@ return(
             <div className="content">
                 <div className="header">{name}</div>
                 <div>{email}</div>
-            </div>
+            
             <i className="trash alternate outline icon"
             style={{color: "red", marginTop: "7px", cursor: "pointer"}}
             onClick={() => props.clickHandler(id)} 
             ></i>
+            
+            </div>
            </div>
           
 );
