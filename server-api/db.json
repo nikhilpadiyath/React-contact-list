@@ -1,29 +1,14 @@
 {
   "contacts": [
     {
-      "id": 95,
-      "name": "Nikhil",
-      "email": "nikhilpadiyath@gmail.com"
-    },
-    {
-      "id": 28,
-      "name": "Ishan",
+      "id": 54,
+      "name": "Neema",
       "email": "neemanikhil15511@gmail.com"
     },
     {
-      "id": 60,
-      "name": "Nihan",
-      "email": "nihan@gmail.com"
-    },
-    {
-      "id": 9,
-      "name": "Hari",
-      "email": "hari@gmail.com"
-    },
-    {
-      "id": 48,
-      "name": "Gino",
-      "email": "gino@gmail.com"
+      "id": 62,
+      "name": "Nikhil",
+      "email": "nikhilpadiyath@gmail.com"
     }
   ]
 }

@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React,{useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 
-
 const AddContact = ({addContactHandler}) => {
-  const[newContact, setNewContact] = useState({name: "", email: ""});
-    
-  const navigate= useNavigate();
+    const [newContact, setNewContact] = useState({name:"", email:""});
+
+    const navigate= useNavigate();
 
     const add = (e) => {
         e.preventDefault();
@@ -15,8 +14,7 @@ const AddContact = ({addContactHandler}) => {
             return;
         }
         addContactHandler(newContact);
-        console.log(newContact);
-        setNewContact({name: "", email: ""});
+        setNewContact({name: "", email:""});
         navigate('/');
     }
     
@@ -30,7 +28,7 @@ const AddContact = ({addContactHandler}) => {
                     name="name" 
                     placeholder="Name" 
                     value= {newContact.name}
-                    onChange= {(e) =>setNewContact({...newContact,name: e.target.value})}/>
+                    onChange= {(e) =>setNewContact({...newContact, name: e.target.value})}/>
                 </div>
                 <div className="field">
                     <label>Email</label>
@@ -38,15 +36,13 @@ const AddContact = ({addContactHandler}) => {
                     name="email" 
                     placeholder="Email"
                     value= {newContact.email}
-                    onChange= {(e) =>setNewContact({...newContact, email: e.target.value})}/> 
+                    onChange= {(e) =>setNewContact({...newContact,email: e.target.value})}/> 
                 </div>
                 <div>
-               
                 <button className="ui button blue">Add Contact</button>
-            
              
-                </div>
-              </form>
+           </div>
+           </form>
            </div>
         );
     }
