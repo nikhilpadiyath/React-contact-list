@@ -16,7 +16,7 @@ return(
             style={{color: "red", marginTop: "7px", cursor: "pointer", marginLeft:'10px'}}
             onClick={() => props.clickHandler(id)} 
             ></i>
-<Link to={{ pathname: `/edit/${id}`, state: { contact: props.contact}}}>
+<Link to={{ pathname: `/edit`, state: { contact: props.contact}}}>
 <i className="edit alternate outline icon"
 style={{color: "blue", marginTop: "7px", cursor: "pointer"}}
 ></i>

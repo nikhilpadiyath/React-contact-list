@@ -14,7 +14,7 @@ const ContactList = (props) => {
     const renderContactList= props.contacts.map((contact)=>{
         return (    
            <ContactCard contact={contact} 
-                        clickHandler= {deleteContactHandler} 
+                        clickHandler= {deleteContactHandler}
                         key={contact.id}
            ></ContactCard>
         );
