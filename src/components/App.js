@@ -6,12 +6,12 @@ import ContactList from './contactlist';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import api from '../api/contacts';
 
-
-
 function App() {
   
    //const LOCAL_STORAGE_KEY= "contacts";
    const [contacts, setContacts]= useState([]);
+   const [searchTerm, setSearchTerm] = useState("");
+   const [searchResults, setSearchResults] = useState([]);
 
    const retrieveContacts = async() => {
     const response = await api.get("/contacts");
@@ -27,19 +27,8 @@ function App() {
         setContacts([...contacts,response.data]);
       };
 
-     // const editContactHandler = async (contact) => {
-     //   const response= await api.put(`/contacts/${contact.id}`, contact);
-     //   const {id,name,email} = response.data;
-      //  setContacts(contacts.map((contact)=> {
-     //     return contact.id === id ? {...response.data} : contact;
-     //   })
-     //   );
-     //     };
-       
- 
-
-
-   const removeContactHandler = async (id) => {
+     
+    const removeContactHandler = async (id) => {
     await api.delete(`/contacts/${id}`);
   
     const newContactList = contacts.filter((contact) => {
@@ -47,6 +36,21 @@ function App() {
     });
     setContacts(newContactList);
    }
+
+   const searchHandler =(searchTerm) => {
+    setSearchTerm(searchTerm);
+    if(searchTerm !== ""){
+      const newContactList = contacts.filter((contact) => {
+        return Object.values(contact).join(" ").toLowerCase().includes(searchTerm.toLowerCase());
+      });
+      setSearchResults(newContactList);
+
+    } else {
+      setSearchResults(contacts);
+    }
+
+
+   };
 
    useEffect(() =>{
     //const retrieveContacts= JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -57,10 +61,7 @@ function App() {
     }
     getAllContacts();
   },[]);
-   
-   useEffect(() =>{
-     // localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
-   },[contacts]);
+  
 
  return (
     
@@ -68,7 +69,13 @@ function App() {
       <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<ContactList contacts={contacts} getContactId= {removeContactHandler} />}>
+        <Route path="/" element={
+        <ContactList 
+        contacts={searchTerm.length <1 ? contacts : searchResults} 
+        getContactId= {removeContactHandler} 
+        term={searchTerm} 
+        searchKeyword= {searchHandler} 
+        />}>
         </Route>
         <Route path="/add" element={<AddContact addContactHandler= {addContactHandler}/>}>
         </Route>
